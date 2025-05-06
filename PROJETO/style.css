@@ -42,7 +42,7 @@ nav a {
     padding: 8rem 2rem;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+        url('file:///C:/Users/lucca/Downloads/IMG_1037.JPEG') no-repeat center center;
     background-size: cover;
     color: white;
     min-height: 60vh;
@@ -80,7 +80,7 @@ nav a {
 
 .cta:hover {
     background-color: transparent;
-    color: var(--preto);
+    color: var(--branco);
 }
 
 .grid-fotos {
@@ -114,4 +114,101 @@ footer a {
     color: var(--branco);
     text-decoration: underline;
 }
+/* Novos estilos adicionados */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
+.destaque-produto {
+    padding: 4rem 0;
+    background-color: var(--branco);
+}
+
+.destaque-produto .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.produto-imagem {
+    flex: 1;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.produto-info {
+    flex: 1;
+}
+
+.produto-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.promocao {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.texto-promocao {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .destaque-produto .container {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .slogan {
+        font-size: 1.2rem;
+    }
+}
+
+.cta1 {
+    display: inline-block;
+    background-color: var(--branco);
+    color: var(--preto);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--branco);
+    transition: all 0.3s;
+}
+
+.cta2 {
+    display: inline-block;
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--preto);
+    transition: all 0.3s;
+}
+
+.cta1:hover {
+    background-color: transparent;
+    color: var(--branco);
+}
+
+.cta2:hover {
+    background-color: transparent;
+    color: var(--preto);
+}
