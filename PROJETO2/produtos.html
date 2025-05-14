@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | CATARSE — Purify Yourself</title>
+    <link rel="stylesheet" href="produtos.css">
+    <link rel="icon" href="img/logo2-removebg-preview.png" type="image/png">
+</head>
+<body>
+    <div class="accessibility-controls">
+        <button id="toggle-theme" aria-label="Alternar entre modo claro e escuro">🌓</button>
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="reset-font" aria-label="Resetar tamanho da fonte">A⏱️</button>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg==" target="_blank">Instagram</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-produtos">
+        <h1>NOSSOS PRODUTOS</h1>
+        <p class="slogan">"purify your wardrobe, elevate your style."</p>
+    </header>
+
+  <section class="catalogo">
+    <div class="container">
+        <h2 class="titulo-secao">Coleção CATARSE</h2>
+        
+        <div class="grade-produtos">
+           
+            <div class="produto">
+                <a href="login.html">
+                    <img src="img/produto1.jpg" alt="Camisa Oversized Moda Bangu preta">
+                    <h3>Camisa Oversized Moda Bangu preta</h3>
+                    <div class="preco-container">
+                        <span class="preco-original">R$ 98,90</span>
+                        <span class="preco-promocional">R$ 89,00</span>
+                        <span class="desconto-badge">-10%</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="produto">
+                <a href="login.html">
+                    <img src="img/produto5.jpg" alt="Camisa Oversized Moda Bangu branca">
+                    <h3>Camisa Oversized Moda Bangu branca</h3>
+                    <div class="preco-container">
+                        <span class="preco-original">R$ 98,90</span>
+                        <span class="preco-promocional">R$ 89,00</span>
+                        <span class="desconto-badge">-10%</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="produto">
+                <a href="login.html">
+                    <img src="img/produto3.jpg" alt="Camiseta Purify">
+                    <h3>Camiseta Purify</h3>
+                    <div class="preco-container">
+                        <span class="preco-original">R$ 98,90</span>
+                        <span class="preco-promocional">R$ 89,00</span>
+                        <span class="desconto-badge">-10%</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="produto">
+                <a href="login.html">
+                    <img src="img/produto4.jpg" alt="Camiseta Catarse Garments">
+                    <h3>Camiseta Catarse Garments</h3>
+                    <div class="preco-container">
+                        <span class="preco-original">R$ 98,90</span>
+                        <span class="preco-promocional">R$ 89,00</span>
+                        <span class="desconto-badge">-10%</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <p>CATARSE © 2024 — "purify yourself"</p>
+        <p><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg==" target="_blank">@catarsegarments</a></p>
+    </footer>
+     <script>
+
+        const toggleTheme = document.getElementById('toggle-theme');
+        const body = document.body;
+        
+        toggleTheme.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+    
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+
+        const increaseFont = document.getElementById('increase-font');
+        const decreaseFont = document.getElementById('decrease-font');
+        const resetFont = document.getElementById('reset-font');
+        
+        increaseFont.addEventListener('click', () => {
+            changeFontSize(1);
+        });
+        
+        decreaseFont.addEventListener('click', () => {
+            changeFontSize(-1);
+        });
+        
+        resetFont.addEventListener('click', () => {
+            document.documentElement.style.fontSize = '16px';
+            localStorage.removeItem('fontSize');
+        });
+
+        function changeFontSize(step) {
+            const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const newSize = currentSize + (step * 2);
+            document.documentElement.style.fontSize = `${newSize}px`;
+            localStorage.setItem('fontSize', newSize);
+        }
+
+    
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            document.documentElement.style.fontSize = `${savedSize}px`;
+        }
+    </script>
+</body>
+</html>

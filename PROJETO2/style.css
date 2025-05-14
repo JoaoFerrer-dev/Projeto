@@ -1,0 +1,253 @@
+:root {
+    --preto: #1a1a1a;
+    --branco: #f5f5f5;
+    --destaque: #666;
+    --fundo: #ffffff;
+    --texto: #1a1a1a;
+    --borda: #ddd;
+    --fundo-input: #f9f9f9;
+}
+
+
+.dark-mode {
+    --preto: #ffffff;
+    --branco: #1a1a1a;
+    --fundo: #2d2d2d;
+    --texto: #ffffff;
+    --borda: #000000;
+    --fundo-input: #3d3d3d;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+.accessibility-controls {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.accessibility-controls button {
+    background: var(--destaque);
+    color: var(--branco);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    background-color: var(--preto);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 8rem 2rem;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('img/background1.JPEG') no-repeat center center;
+    background-size: cover;
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    letter-spacing: 5px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slogan {
+    font-style: italic;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+
+
+.cta {
+    display: inline-block;
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--preto);
+    transition: all 0.3s;
+}
+
+.cta:hover {
+    background-color: transparent;
+    color: var(--branco);
+}
+
+.cta1 {
+    display: inline-block;
+    background-color: var(--branco);
+    color: var(--preto);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--branco);
+    transition: all 0.3s;
+}
+
+.cta2 {
+    display: inline-block;
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--preto);
+    transition: all 0.3s;
+}
+
+.cta1:hover {
+    background-color: transparent;
+    color: var(--branco);
+}
+
+.cta2:hover {
+    background-color: transparent;
+    color: var(--preto);
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.destaque-produto {
+    padding: 4rem 0;
+    background-color: var(--fundo);
+}
+
+.destaque-produto .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.produto-imagem {
+    flex: 1;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.produto-info {
+    flex: 1;
+}
+
+.produto-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--texto);
+}
+
+.produto-info p {
+    color: var(--texto);
+}
+
+.promocao {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.texto-promocao {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--preto);
+    color: var(--branco);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .destaque-produto .container {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .slogan {
+        font-size: 1.2rem;
+    }
+    
+    .accessibility-controls {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+    }
+}

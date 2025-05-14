@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATARSE — Purify Yourself</title>
+    <link rel="stylesheet" href="sobre.css">
+    <link rel="icon" href="img/logo2-removebg-preview.png" type="image/png">
+</head>
+<body>
+     <div class="accessibility-controls">
+        <button id="toggle-theme" aria-label="Alternar entre modo claro e escuro">🌓</button>
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="reset-font" aria-label="Resetar tamanho da fonte">A⏱️</button>
+    </div>
+    <nav> 
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#estetica">Estética</a></li>
+            <li><a href="#produto">Produto</a></li>
+            <li><a href="#remessa">Drop</a></li>
+            <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">Instagram</a></li>
+        </ul>
+    </nav>
+
+    <header class="home">
+        <h1>CATARSE</h1>
+        <p class="slogan">"purify yourself, experience catharsis."</p>
+        <a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3Dl" target="_blank" class="cta">Siga-nos</a>
+    </header>
+    <section id="manifesto">
+        <h2>Manifesto</h2>
+        <p>A CATARSE não é só uma peça de roupa.</p>
+        <p>É a ruptura com o automático.<br>
+           É a purificação do excesso.<br>
+           É o silêncio no barulho da rua.</p>
+        <p>Fazemos peças para quem carrega o caos com estilo.<br>
+           Para quem se veste com intenção.</p>
+    </section>
+    <section id="estetica">
+        <h2>A Estética</h2>
+        <p>Minimalista nos traços.<br>
+           Meticulosa nos acabamentos.<br>
+           Com alma de rua, mas postura de passarela.</p>
+        <p>Referências: underground UK e BR, arte concreta, Piet, Down Jacquards, Mad Enlatados, Margiela, Y-3.</p>
+    </section>
+
+   
+    <section id="produto">
+        <h2>O Produto</h2>
+        <div class="grid-fotos">
+           
+        
+            <div class="foto-item">
+                <a href="produtos.html">
+                <img src="img/camisa.jpg" alt="Camiseta CATARSE Oversized"></a>
+            </div>
+            <div class="foto-item">
+                <a href="produtos.html">
+                <img src="img/logo.jpg" alt="Detalhe Costura"></a>
+            </div>
+            <div class="foto-item">
+                <a href="produtos.html">
+                <img src="img/camisa2.jpg" alt="Tag Bordada"></a>
+            </div>
+        </div>
+        <h3>Camisetas Oversized Boxy</h3>
+        <ul>
+            <li>Tecido: 100% algodão</li>
+            <li>Fio: 20.1</li>
+            <li>Gramatura: 220g (peso premium)</li>
+            <li>Produção: BRUNX (Private Label)</li>
+        </ul>
+        <p>Estética clean, mas com presença.<br>
+           Etiqueta bordada, tag personalizada, entrega com storytelling.</p>
+    </section>
+
+ 
+    <section id="remessa">
+        <h2>A Primeira Remessa</h2>
+        <p>50 camisetas (25 P/M e 25 G/GG)<br>
+           Tudo feito com fornecedores parceiros e confiáveis.</p>
+        <a href="login.html" target="_blank" class="cta1">Garanta a sua</a>
+    </section>
+
+   
+    <footer>
+        <p>CATARSE © 2024 — "purify yourself"</p>
+        <p>Siga-nos: <a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">@catarsegarments</a></p>
+    </footer>
+    <script>
+      
+        const toggleTheme = document.getElementById('toggle-theme');
+        const body = document.body;
+        
+        toggleTheme.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+       
+        const increaseFont = document.getElementById('increase-font');
+        const decreaseFont = document.getElementById('decrease-font');
+        const resetFont = document.getElementById('reset-font');
+        
+        increaseFont.addEventListener('click', () => {
+            changeFontSize(1);
+        });
+        
+        decreaseFont.addEventListener('click', () => {
+            changeFontSize(-1);
+        });
+        
+        resetFont.addEventListener('click', () => {
+            document.documentElement.style.fontSize = '16px';
+            localStorage.removeItem('fontSize');
+        });
+
+        function changeFontSize(step) {
+            const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const newSize = currentSize + (step * 2);
+            document.documentElement.style.fontSize = `${newSize}px`;
+            localStorage.setItem('fontSize', newSize);
+        }
+
+        
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            document.documentElement.style.fontSize = `${savedSize}px`;
+        }
+    </script>
+</body>
+</html>
