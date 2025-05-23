@@ -15,24 +15,23 @@
         <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
         <button id="reset-font" aria-label="Resetar tamanho da fonte">A⏱️</button>
     </div>
-
-    <header>
-        <nav class="main-nav">
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">Instagram</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <nav>
+    <div class="nav-brand">
+        <a href="index.html" class="logo-link">
+            <img src="img/logo2-removebg-preview.png" alt="Logo Catarse" class="nav-logo">
+            <span class="brand-name">CATARSE</span>
+        </a>
+    </div>
+    <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">Instagram</a></li>
+    </ul>
+</nav>
+ 
     <main class="login-container">
+      
         <div class="login-box">
             <h2>ACESSO</h2>
             <p class="slogan">"purify yourself"</p>
@@ -73,68 +72,51 @@
         <p>CATARSE © 2024 — "purify yourself"</p>
         <p><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">@catarsegarments</a></p>
     </footer>
+     <script>
+      
+        const toggleTheme = document.getElementById('toggle-theme');
+        const body = document.body;
+        
+        toggleTheme.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
 
-    <script>
-        // Tema dark/light
-const toggleTheme = document.getElementById('toggle-theme');
-const body = document.body;
 
-toggleTheme.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
 
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-}
+  
+        const increaseFont = document.getElementById('increase-font');
+        const decreaseFont = document.getElementById('decrease-font');
+        const resetFont = document.getElementById('reset-font');
+        
+        increaseFont.addEventListener('click', () => {
+            changeFontSize(1);
+        });
+        
+        decreaseFont.addEventListener('click', () => {
+            changeFontSize(-1);
+        });
+        
+        resetFont.addEventListener('click', () => {
+            document.documentElement.style.fontSize = '16px';
+            localStorage.removeItem('fontSize');
+        });
 
-// Controles de tamanho de fonte
-const increaseFont = document.getElementById('increase-font');
-const decreaseFont = document.getElementById('decrease-font');
-const resetFont = document.getElementById('reset-font');
+        function changeFontSize(step) {
+            const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const newSize = currentSize + (step * 2);
+            document.documentElement.style.fontSize = `${newSize}px`;
+            localStorage.setItem('fontSize', newSize);
+        }
 
-increaseFont.addEventListener('click', () => {
-    changeFontSize(1);
-});
-
-decreaseFont.addEventListener('click', () => {
-    changeFontSize(-1);
-});
-
-resetFont.addEventListener('click', () => {
-    document.documentElement.style.fontSize = '16px';
-    localStorage.removeItem('fontSize');
-});
-
-function changeFontSize(step) {
-    const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const newSize = currentSize + (step * 2);
-    document.documentElement.style.fontSize = `${newSize}px`;
-    localStorage.setItem('fontSize', newSize);
-}
-
-// Aplicar tamanho de fonte salvo
-const savedSize = localStorage.getItem('fontSize');
-if (savedSize) {
-    document.documentElement.style.fontSize = `${savedSize}px`;
-}
-
-// Menu hamburger
-const hamburger = document.querySelector('.hamburger-menu');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Fechar menu ao clicar em um link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
+       
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            document.documentElement.style.fontSize = `${savedSize}px`;
+        }
     </script>
 </body>
 </html>
