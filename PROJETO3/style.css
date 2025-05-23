@@ -7,8 +7,8 @@
     --borda: #ddd;
     --fundo-input: #f9f9f9;
     --text-color: white;
-    --hover-underline: white;
 }
+
 
 .dark-mode {
     --preto: #ffffff;
@@ -31,14 +31,17 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Controles de acessibilidade */
+
 .accessibility-controls {
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 1000;
+    z-index: 1001; /* MAIOR que o z-index da NAV */
     display: flex;
     gap: 5px;
+    background-color: rgba(0,0,0,0.5); /* Fundo semitransparente */
+    padding: 5px;
+    border-radius: 20px;
 }
 
 .accessibility-controls button {
@@ -53,20 +56,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s;
 }
 
-/* Navegação */
-.main-nav {
+.accessibility-controls button:hover {
+    transform: scale(1.1);
+}
+
+nav {
     background-color: var(--preto);
     padding: 1rem;
     position: sticky;
     top: 0;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
 }
 
-.nav-links {
+nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -75,60 +79,14 @@ body {
     padding: 0;
 }
 
-.nav-links a {
+nav a {
     color: var(--branco);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    transition: color 0.3s;
 }
 
-.nav-links li {
-    cursor: pointer;
-    position: relative;
-    padding: 5px 0;
-}
-
-.nav-links li::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--hover-underline);
-    transition: width 0.5s ease;
-    opacity: 0.7;
-}
-
-.nav-links li:hover::after {
-    width: 100%;
-}
-
-/* Menu Hamburger */
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    padding: 10px;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1001;
-}
-
-.hamburger-menu .bar {
-    width: 100%;
-    height: 3px;
-    background-color: var(--destaque);
-    transition: all 0.3s ease;
-}
-
-/* Hero Section */
 .hero {
     text-align: center;
     padding: 8rem 2rem;
@@ -158,7 +116,7 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Botões */
+
 .cta {
     display: inline-block;
     background-color: var(--preto);
@@ -210,12 +168,13 @@ body {
     color: var(--preto);
 }
 
-/* Container */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
+
 
 .destaque-produto {
     padding: 4rem 0;
@@ -253,7 +212,6 @@ body {
     color: var(--texto);
 }
 
-/* Seção de Promoção */
 .promocao {
     background-color: var(--preto);
     color: var(--branco);
@@ -266,7 +224,7 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Rodapé */
+
 footer {
     text-align: center;
     padding: 2rem;
@@ -279,6 +237,252 @@ footer {
 footer a {
     color: var(--branco);
     text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .destaque-produto .container {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .slogan {
+        font-size: 1.2rem;
+    }
+    
+    .accessibility-controls {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+
+nav ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav ul li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-color); /* Usando variável */
+    transition: width 0.5s ease;
+    background-color: white;
+    background-color: currentColor; 
+    opacity: 0.7; 
+    background-color: var(--hover-underline, white);
+}
+.dark-mode nav ul li::after {
+    background-color: black; /* Para dark mode */
+}
+
+
+nav ul li:hover::after {
+    width: 100%;
+}
+
+/* Estilo base da nav */
+nav {
+    background-color: var(--preto);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Container da logo (mantém no canto esquerdo) */
+.nav-brand {
+    position: absolute;
+    left: 20px;
+}
+
+/* Lista centralizada */
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 0;
+    width: 100%; /* Ocupa toda a largura disponível */
+}
+
+/* Itens da lista */
+.nav-list a {
+    color: var(--branco);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Efeito hover nos itens */
+.nav-list li {
+    position: relative;
+}
+
+.nav-list li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--branco);
+    transition: width 0.3s ease;
+}
+
+.nav-list li:hover::after {
+    width: 100%;
+}
+
+/* Estilo da logo */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.nav-logo {
+    height: 30px;
+    width: auto;
+}
+
+.brand-name {
+    color: var(--branco);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .nav-list {
+        gap: 1rem;
+        padding-left: 100px; /* Compensa a logo */
+    }
+    
+    .nav-brand {
+        left: 10px;
+    }
+    
+    .nav-logo {
+        height: 25px;
+    }
+    
+    .brand-name {
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos do carrossel */
+.carrossel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrossel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carrossel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.carrossel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrossel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Indicadores de slide */
+.carrossel-indicadores {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carrossel-indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carrossel-indicador.active {
+    background-color: white;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+    .carrossel {
+        max-width: 100%;
+    }
+    
+    .carrossel-btn {
+        padding: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
 }
 
 /* Responsividade */
