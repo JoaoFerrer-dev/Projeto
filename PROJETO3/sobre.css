@@ -1,0 +1,322 @@
+:root {
+    --preto: #1a1a1a;
+    --branco: #f5f5f5;
+    --destaque: #666;
+    --fundo: #ffffff;
+    --texto: #1a1a1a;
+    --borda: #ddd;
+    --fundo-card: #f9f9f9;
+    --text-color: white;
+    --hover-underline: white;
+}
+
+.dark-mode {
+    --preto: #f5f5f5;
+    --branco: #1a1a1a;
+    --fundo: #2d2d2d;
+    --texto: #f5f5f5;
+    --borda: #444;
+    --fundo-card: #3d3d3d;
+    --text-color: black;
+    --hover-underline: black;
+}
+
+/* Controles de acessibilidade */
+.accessibility-controls {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.accessibility-controls button {
+    background: var(--destaque);
+    color: var(--branco);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navegação */
+.main-nav {
+    background-color: var(--preto);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--branco);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-links li {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--hover-underline);
+    transition: width 0.5s ease;
+    opacity: 0.7;
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+
+/* Menu Hamburger */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--destaque);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.home {
+    text-align: center;
+    padding: 5rem 2rem;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('img/background1.JPEG') no-repeat center center;
+    background-size: cover;
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home h1 {
+    font-weight: 300;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slogan {
+    font-style: italic;
+    color: var(--branco);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+
+/* Seções de conteúdo */
+section {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: background-color 0.3s;
+}
+
+h2 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 1px solid var(--texto);
+    padding-bottom: 0.5rem;
+    color: var(--texto);
+}
+
+h3 {
+    color: var(--texto);
+}
+
+/* Grid de fotos */
+.grid-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.foto-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    border-radius: 4px;
+}
+
+.foto-item img:hover {
+    transform: scale(1.02);
+}
+
+/* Botões */
+.cta {
+    display: inline-block;
+    background-color: var(--branco);
+    color: var(--preto);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    border: 1px solid var(--branco);
+    transition: all 0.3s;
+}
+
+.cta:hover {
+    background-color: transparent;
+    color: var(--branco);
+}
+
+.cta1 {
+    display: inline-block;
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--preto);
+    transition: all 0.3s;
+}
+
+.cta1:hover {
+    background-color: transparent;
+    color: var(--preto);
+}
+
+.dark-mode .cta1:hover {
+    color: var(--branco);
+}
+
+/* Listas */
+ul {
+    color: var(--texto);
+    padding-left: 1.5rem;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--preto);
+    color: var(--branco);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--preto);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        transform: translateX(0);
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    /* Animação do hamburger para X */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Esconde os links na navegação normal em mobile */
+    .main-nav .nav-links:not(.active) {
+        display: none;
+    }
+    
+    .home h1 {
+        font-size: 2.5rem;
+    }
+    
+    .slogan {
+        font-size: 1.2rem;
+    }
+    
+    .accessibility-controls {
+        top: 15px;
+        right: 15px;
+        bottom: auto;
+    }
+    
+    section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .grid-fotos {
+        grid-template-columns: 1fr;
+    }
+}
