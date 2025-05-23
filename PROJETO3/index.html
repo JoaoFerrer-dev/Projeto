@@ -14,43 +14,49 @@
         <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
         <button id="reset-font" aria-label="Resetar tamanho da fonte">A⏱️</button>
     </div>
+  <nav>
+    <div class="nav-brand">
+        <a href="#home" class="logo-link">
+            <img src="img/logo2-removebg-preview.png" alt="Logo Catarse" class="nav-logo">
+            <span class="brand-name">CATARSE</span>
+        </a>
+    </div>
+    <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg==" target="_blank">Instagram</a></li>
+    </ul>
+</nav>
 
-    <header>
-        <nav class="main-nav">
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg==" target="_blank">Instagram</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
+    <header id="home" class="hero">
         <h1>CATARSE</h1>
         <p class="slogan">"purify yourself, experience catharsis."</p>
         <a href="produtos.html" class="cta">Reserve a sua</a>
-    </section>
+    </header>
 
     <section class="destaque-produto">
-        <div class="container">
-            <div class="produto-imagem">
-                <a href="produtos.html">
-                <img src="img/produto1.jpg" alt="Coleção Catarse"></a>
+    <div class="container">
+        <div class="carrossel">
+            <div class="carrossel-container">
+                <div class="carrossel-slide active">
+                    <img src="img/produto1.jpg" alt="Produto 1">
+                </div>
+                <div class="carrossel-slide">
+                    <img src="img/produto5.jpg" alt="Produto 2">
+                </div>
             </div>
-            <div class="produto-info">
-                <h2>Nova Coleção</h2>
-                <p>Descubra nossa linha exclusiva de roupas que combinam conforto e estilo único.</p>
-                <a href="produtos.html" class="cta2">Ver Produtos</a>
-            </div>
+            <button class="carrossel-btn prev" aria-label="Slide anterior">&#10094;</button>
+            <button class="carrossel-btn next" aria-label="Próximo slide">&#10095;</button>
         </div>
-    </section>
+        <div class="produto-info">
+            <h2>Nova Coleção</h2>
+            <p>Descubra nossa linha exclusiva de roupas que combinam conforto e estilo único.</p>
+            <a href="produtos.html" class="cta2">Ver Produtos</a>
+        </div>
+    </div>
+</section>
 
     <section class="promocao">
         <div class="container">
@@ -59,57 +65,125 @@
         </div>
     </section>
 
+
     <footer>
         <p>CATARSE © 2024 — "purify yourself"</p>
         <p><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg==" target="_blank">@catarsegarments</a></p>
     </footer>
+     <script>
+        
+        const toggleTheme = document.getElementById('toggle-theme');
+        const body = document.body;
+        
+        toggleTheme.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
 
-    <script>
-        // Tema dark/light
-const toggleTheme = document.getElementById('toggle-theme');
-const body = document.body;
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
 
-toggleTheme.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
+        
+        const increaseFont = document.getElementById('increase-font');
+        const decreaseFont = document.getElementById('decrease-font');
+        const resetFont = document.getElementById('reset-font');
+        
+        increaseFont.addEventListener('click', () => {
+            changeFontSize(1);
+        });
+        
+        decreaseFont.addEventListener('click', () => {
+            changeFontSize(-1);
+        });
+        
+        resetFont.addEventListener('click', () => {
+            document.documentElement.style.fontSize = '16px';
+            localStorage.removeItem('fontSize');
+        });
 
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-}
+        function changeFontSize(step) {
+            const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+            const newSize = currentSize + (step * 2);
+            document.documentElement.style.fontSize = `${newSize}px`;
+            localStorage.setItem('fontSize', newSize);
+        }
 
-// Controles de tamanho de fonte
-const increaseFont = document.getElementById('increase-font');
-const decreaseFont = document.getElementById('decrease-font');
-const resetFont = document.getElementById('reset-font');
+        
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            document.documentElement.style.fontSize = `${savedSize}px`;
+            
+        }
 
-increaseFont.addEventListener('click', () => {
-    changeFontSize(1);
-});
+        document.addEventListener('DOMContentLoaded', function() {
+        const carrossel = document.querySelector('.carrossel-container');
+        const slides = document.querySelectorAll('.carrossel-slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
 
-decreaseFont.addEventListener('click', () => {
-    changeFontSize(-1);
-});
+        function updateCarrossel() {
+            carrossel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Atualiza indicadores (se estiver usando)
+            document.querySelectorAll('.carrossel-indicador').forEach((indicador, index) => {
+                indicador.classList.toggle('active', index === currentIndex);
+            });
+        }
 
-resetFont.addEventListener('click', () => {
-    document.documentElement.style.fontSize = '16px';
-    localStorage.removeItem('fontSize');
-});
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarrossel();
+        }
 
-function changeFontSize(step) {
-    const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const newSize = currentSize + (step * 2);
-    document.documentElement.style.fontSize = `${newSize}px`;
-    localStorage.setItem('fontSize', newSize);
-}
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarrossel();
+        }
 
-// Aplicar tamanho de fonte salvo
-const savedSize = localStorage.getItem('fontSize');
-if (savedSize) {
-    document.documentElement.style.fontSize = `${savedSize}px`;
-}
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
 
-// Menu hamburger
+        // Opcional: Autoplay
+        let autoplay = setInterval(nextSlide, 5000);
+
+        // Pausa autoplay quando o mouse está sobre o carrossel
+        document.querySelector('.carrossel').addEventListener('mouseenter', () => {
+            clearInterval(autoplay);
+        });
+
+        document.querySelector('.carrossel').addEventListener('mouseleave', () => {
+            autoplay = setInterval(nextSlide, 5000);
+        });
+
+        // Opcional: Toque para mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.carrossel').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.querySelector('.carrossel').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
+            }
+        }
+    });
+
+    // Menu hamburger
 const hamburger = document.querySelector('.hamburger-menu');
 const navLinks = document.querySelector('.nav-links');
 
