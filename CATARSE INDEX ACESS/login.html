@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATARSE - Login</title>
+    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="img/logo2-removebg-preview.png" type="image/png">
+</head>
+<body>
+    <div class="accessibility-controls">
+        <button id="toggle-theme" aria-label="Alternar entre modo claro e escuro">🌓</button>
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="reset-font" aria-label="Resetar tamanho da fonte">A⏱️</button>
+    </div>
+    <nav>
+    <div class="nav-brand">
+        <a href="index.html" class="logo-link">
+            <img src="img/logo2-removebg-preview.png" alt="Logo Catarse" class="nav-logo">
+            <span class="brand-name">CATARSE</span>
+        </a>
+    </div>
+    <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">Instagram</a></li>
+    </ul>
+</nav>
+ 
+    <main class="login-container">
+      
+        <div class="login-box">
+            <h2>ACESSO</h2>
+            <p class="slogan">"purify yourself"</p>
+
+            <form id="form-login">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="login" 
+                        name="login" 
+                        placeholder="Login (6 letras)"
+                        pattern="[A-Za-z]{6}" 
+                        title="Exatamente 6 caracteres alfabéticos" 
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        name="senha" 
+                        placeholder="Senha (8 letras)"
+                        pattern="[A-Za-z]{8}" 
+                        title="8 caracteres alfabéticos" 
+                        required>
+                </div>
+
+                <button type="submit" class="cta">Entrar</button>
+
+                <div class="link-cadastro">
+                    <p>Não tem conta? <a href="cadastro.html">Crie uma</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>CATARSE © 2024 — "purify yourself"</p>
+        <p><a href="https://www.instagram.com/catarsegarments?igsh=MWNvOW5hYXFmNm1hMg%3D%3D" target="_blank">@catarsegarments</a></p>
+    </footer>
+     <script src="login.js"></script>
+</body>
+</html>
